@@ -1,0 +1,30 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}
+    Les utilisateurs avec des frais
+{% endblock %}
+
+{% block text %}    
+    <div class='container-fluid'>
+        <div class='row'>
+            <div class='col-12'>
+                <div class="block" >
+                    <center><h1 class="title text-light" style="font-size:50px"><b>Les utilisateurs avec des frais</b></h1></center>
+                    <div class="container my-5 d-grind gap-5">
+                        <div class="p-5 border" style="background-color:#374e6e ">
+                            {% if listeUtilisateursByFrais is empty %}
+                                <p class="text-light" style="font-size:30px"> Les utilisateurs n'ont pas encore de frais </p>
+                            {% else %}
+                                {% for unUtilisateur in listeUtilisateursByFrais %}
+                                    <p class="text-light" style="font-size:30px">
+                                        Nom utilisateur : {{ unUtilisateur.nom }}, <br>
+                                        Prénom utilisateur : {{ unUtilisateur.prenom }},<br>
+                                        Montant des frais utilisateurs : {{ unUtilisateur.1 }}</p>
+                                {% endfor %} 
+                            {% endif %}                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+ <div class="block">
+     <center><h1 class="title text-light" style="font-size:50px"><b>Bienvenue !</b></h1></center>
+            <div class="container my-5 d-grind gap-5">
+          <div class="p-5 border" style="background-color:#374e6e">
+
+              <p class="text-light" style="font-size:30px; text-align: justify">
+                  <b>Bienvenue sur le site qui vous présente la <a href={{ path('sommaire') }}>GSB</a>. Vous pourrez retrouver dans différentes rebriques toutes les informations concernant cette société !</b>
+
+              </p>
+          </div>
+      </div>
+      </div>
+            </div>
+{% endblock %}

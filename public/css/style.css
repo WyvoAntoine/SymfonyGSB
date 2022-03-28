@@ -1,0 +1,27 @@
+.text{
+    padding-top: 15%;
+    text-align: center;
+    font-size: 100px;
+}
+
+.text2{
+    font-size:40px;
+}
+
+body{
+    background-image: url('../img/paysage2.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+
+.block{
+margin-top: 200px;
+
+ 
+}
+
+.title{
+    text-shadow:2px 0 0 #374e6e, 2px 2px 0 #374e6e, 0 2px 0 #374e6e, -2px 2px 0 #374e6e,-2px 0 0 #374e6e,-2px -2px 0 #374e6e,0 -2px 0 #374e6e,2px -2px 0 #374e6e
+}
+

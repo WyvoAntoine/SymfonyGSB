@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block contenu %}
+    <title>{% block title %}Sommaire GSB{% endblock %}</title>
+    {% block body %}
+            <body background="img/paysage2.jpg">
+                <nav class="navbar navbar-expand-md navbar-dark p-md-3">
+                    <a class="px-5" href="{{path('accueil')}}"><b class="text-light" style="font-size:40px">ACCUEIL</b></a>
+                    <ul class="navbar-nav">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary" style="background-color: black; border-color: black;"><a href="{{ path('sommaire') }}">Sommaire</a></button>
+                            <div class="btn-group" style="background-color: black; border-color: black;">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background-color: black; border-color: black; color: #0d6efd;">
+                                    SI
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ path('gsb')}}">GSB</a>
+                                    <a class="dropdown-item" href="{{ path('gestionGsb')}}">Gestion</a>
+                                    <a class="dropdown-item" href="{{ path('equipementGsb')}}">Equipement</a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background-color: black; border-color: black; color: #0d6efd">
+                                    Réseau
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ path('repartitionGsb')}}">Répartition</a>
+                                    <a class="dropdown-item" href="{{ path('segmentationGsb')}}">Segmentation du réseau</a>
+                                </div>
+                            </div>
+                            <div class="btn-group" style="background-color: black; border-color: black;">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background-color: black; border-color: black; color: #0d6efd;">
+                                    Les utilisateurs
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ path('lesUtilisateurs')}}">Liste utilisateurs</a>
+                                    <a class="dropdown-item" href="{{ path('lesUtilisateursByVille')}}">Utilisateurs par ville</a>
+                                    <a class="dropdown-item" href="{{ path('lesUtilisateursByFrais')}}">Utilisateurs ayant des frais</a>
+                                    <a class="dropdown-item" href="{{ path('lesUtilisateursBySansFrais')}}">Utilisateurs sans frais</a>
+                                    <a class="dropdown-item" href="{{ path('lesUtilisateursByNbFiches')}}">Nombre de fiches / Utilisateurs</a>
+                                </div>
+                            </div>
+                        </div>                        
+                    </ul>
+                </nav>
+            </body>
+        {% endblock %}
+{% endblock %}
