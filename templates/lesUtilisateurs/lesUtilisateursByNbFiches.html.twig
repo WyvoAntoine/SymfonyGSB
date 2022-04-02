@@ -9,18 +9,23 @@
         <div class='row'>
             <div class='col-12'>
                 <div class="block" >
-                    <center><h1 class="title text-light" style="font-size:50px"><b>Les utilisateurs sans des frais</b></h1></center>
+                    <center><h1 class="title text-light" style="font-size:50px"><b>Les utilisateurs sans fiches de frais</b></h1></center>
                     <div class="container my-5 d-grind gap-5">
                         <div class="p-5 border" style="background-color:#374e6e ">
-                            {% if listeUtilisateursBySansFrais is empty %}
-                                <p class="text-light" style="font-size:30px"> Les utilisateurs ont tous des frais </p>
+                            {%  if listeUtilisateursByNbFiches is empty %}
+                                <p class="text-light" style="font-size:30px">
+                                    Les utilisateurs n'ont aucune fiche de frais
+                                </p>
                             {% else %}
-                                {% for unUtilisateur in listeUtilisateursBySansFrais %}
+                                {% for unUtilisateur in listeUtilisateursByNbFiches %}
                                     <p class="text-light" style="font-size:30px">
                                         Nom utilisateur : {{ unUtilisateur.nom }},<br>
-                                        Prénom utilisateur : {{ unUtilisateur.prenom }}</p>
-                                {% endfor %} 
-                            {% endif %}                        
+                                        Prénom utilisateur : {{ unUtilisateur.prenom }},<br>
+                                        Nombre de fiche(s) : {{ unUtilisateur.1 }}
+                                        <br><br><br>
+                                    </p>
+                                {% endfor %}                                
+                            {% endif %}                     
                         </div>
                     </div>
                 </div>

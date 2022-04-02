@@ -23,7 +23,7 @@ class presentationGSBController extends AbstractController
     }
     
     /**
-     * @Route("/sfGSB/pageBienvenue", name="bienvenue")
+     * @Route("/sfGSB/accueil/pageBienvenue", name="bienvenue")
      */
     public function bienvenue() : Response
     {
@@ -31,7 +31,7 @@ class presentationGSBController extends AbstractController
     }
     
     /**
-     * @Route("/sfGSB/sommaire", name="sommaire")
+     * @Route("/sfGSB/accueil/sommaire", name="sommaire")
      */
     public function sommaire() : Response
     {
@@ -85,11 +85,11 @@ class presentationGSBController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(\App\Entity\Utilisateur::class);
         $lesUtilisateurs = $repo->findAll();
-        //$nbUtilisateurs = $repo->nbUtilisateur();
+        $nbUtilisateurs = $repo->nbUtilisateurs();
         return $this->render('lesUtilisateurs/lesUtilisateurs.html.twig',
                 [
                     'listeUtilisateurs' => $lesUtilisateurs,
-                    //'nbUtilisateurs' => $nbUtilisateurs
+                    'nbUtilisateurs' => $nbUtilisateurs
                     ]
                 ); 
     } 
@@ -142,11 +142,25 @@ class presentationGSBController extends AbstractController
      */    
     public function lesUtilisateursByNbFiches() : Response
     {
-        $repo = $this->getDoctrine()->getRepository(\App\Entity\Fichefrais::class);
-        $lesUtilisateursByNbFiches = $repo->nbFichesUtilissateur();
-        return $this->render('lesUtilisateurs/lesUtilisateursBySNbFiches.html.twig',
+        $repo = $this->getDoctrine()->getRepository(\App\Entity\Utilisateur::class);
+        $lesUtilisateursByNbFiches = $repo->nbFichesUtilisateurs();
+        return $this->render('lesUtilisateurs/lesUtilisateursByNbFiches.html.twig',
                 [
                     'listeUtilisateursByNbFiches' => $lesUtilisateursByNbFiches,
+                    ]
+                );         
+    }
+    
+    /**
+     * @Route("/sfGSB/lesDomaines/", name="lesDomaines")
+     */    
+    public function lesDomaines() : Response
+    {
+        $repo = $this->getDoctrine()->getRepository(\App\Entity\Domaine::class);       
+        $lesDomaines = $repo->findAll();  
+        return $this->render('lesDomaines/lesDomaines.html.twig',
+                [
+                    'listeDomaines' => $lesDomaines
                     ]
                 );         
     }

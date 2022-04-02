@@ -13,14 +13,19 @@
                     <div class="container my-5 d-grind gap-5">
                         <div class="p-5 border" style="background-color:#374e6e ">
                             <br> 
+                            <p class="text-light" style="font-size:30px"> 
+                                    <u>Nombre d'utilisateur(s) :</u> {{ nbUtilisateurs }} <br><br><br>
                             {% for unUtilisateur in listeUtilisateurs %}
                                 <p class="text-light" style="font-size:30px"> 
-                                    Id utilisateur : {{ unUtilisateur.id }}, <br>
-                                    Nom utilisateur : {{ unUtilisateur.nom }}, <br>
-                                    Prenom utilisateur : {{ unUtilisateur.prenom }}, <br>
-                                    Adresse utiliateur : {{ unUtilisateur.adresse }}, <br>
-                                    Code postal utilisateur : {{ unUtilisateur.cp }}, <br>
-                                    Ville utilisateur : {{ unUtilisateur.ville }}</p>
+                                    <u>Id utilisateur :</u> {{ unUtilisateur.id }}, <br>
+                                    <u>Nom utilisateur :</u> {{ unUtilisateur.nom }}, <br>
+                                    <u>Prenom utilisateur :</u> {{ unUtilisateur.prenom }}, <br>
+                                    <u>Adresse utiliateur :</u> {{ unUtilisateur.adresse }}, <br>
+                                    <u>Code postal utilisateur :</u> {{ unUtilisateur.cp }}, <br>
+                                    <u>Ville utilisateur :</u> {{ unUtilisateur.ville }}, <br>
+                                    <u>Catégorie :</u>  {{ unUtilisateur.idCategorie.nomCategorie }}
+                                    <br> <br> <br>
+                                </p>
                             {% endfor %}                         
                         </div>
                     </div>

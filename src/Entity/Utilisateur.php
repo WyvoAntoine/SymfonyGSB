@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -63,6 +65,13 @@ class Utilisateur
      */
     private $dateembauche;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idCategorie;
+
+    
     public function getId(): ?string
     {
         return $this->id;
@@ -145,11 +154,15 @@ class Utilisateur
         return $this;
     }
     
-    public function listeUtilisateur()
+    public function getIdCategorie(): ?Categorie
     {
-        $em = $this->getEntityManager();
-        $query = $em->createQuery(" SELECT COUNT(*) FROM App\Entity\Utilisateur");
-        $nbUtilisateurs = $query->getResult();
-        return $nbUtilisateurs;
+        return $this->idCategorie;
+    }
+
+    public function setIdCategorie(?Categorie $idCategorie): self
+    {
+        $this->idCategorie = $idCategorie;
+
+        return $this;
     }
 }

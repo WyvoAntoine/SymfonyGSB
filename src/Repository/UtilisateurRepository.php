@@ -48,12 +48,21 @@ class UtilisateurRepository extends ServiceEntityRepository
     }
     */
     
-    /*public function nbUtilisateur()
+    public function nbUtilisateurs()
     {
         $em = $this->getEntityManager();
-        $query = $em->createQuery(" SELECT COUNT(*)FROM App\Entity\Utilisateur") ;
-        $laListe = $query->getResult();
-        return $laListe;        
-    }*/
+        $query = $em->createQuery(" SELECT COUNT(u) FROM App\Entity\Utilisateur u");
+        $nbUtilisateurs = $query->getSingleScalarResult();
+        return $nbUtilisateurs;
+    }
+    
+    public function nbFichesUtilisateurs()
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery("SELECT COUNT(f.montantvalide), u.prenom, u.nom, u.id FROM App\Entity\Utilisateur u LEFT OUTER JOIN App\Entity\Fichefrais f
+        WITH f.idutilisateur = u.id GROUP BY u.id");
+        $nbFichesUtilisateurs = $query->getresult();
+        return $nbFichesUtilisateurs;
+    }
 
 }
