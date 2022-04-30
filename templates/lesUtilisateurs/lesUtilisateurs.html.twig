@@ -14,7 +14,7 @@
                         <div class="p-5 border" style="background-color:#374e6e ">
                             <br> 
                             <p class="text-light" style="font-size:30px"> 
-                                    <u>Nombre d'utilisateur(s) :</u> {{ nbUtilisateurs }} <br><br><br>
+                                    <center><h1 class="title text-light" style="font-size:50px; border"><b>Liste des utilisateurs<br/></b></h1><p class="title" style="color:white; font-size: 18px;">{{ listeUtilisateurs |length }} utilisateurs inscris sur le site</p></center>
                             {% for unUtilisateur in listeUtilisateurs %}
                                 <p class="text-light" style="font-size:30px"> 
                                     <u>Id utilisateur :</u> {{ unUtilisateur.id }}, <br>

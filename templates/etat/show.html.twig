@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'état{% endblock %}
+
+{% block body %}
+   <div class="pc">
+        <br/><br/><br/>
+        <center><h1 class="title text-light" style="font-size:50px; border">Détails de l'état</h1></center>
+        <br/>
+        <div class="p-5 border" style="background-color:#374e6e ">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ etat.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ etat.libelle }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+                <center><a href="{{ path('etat_index') }}">Retour</a>  &nbsp;&nbsp; 
+
+    <a href="{{ path('etat_edit', {'id': etat.id}) }}">Modifier</a>&nbsp;&nbsp;
+    
+    <a href="{{ path('etat_delete', {'id':etat.id}) }}">Supprimer</a></center>&nbsp;&nbsp;
+
+        </div>
+   </div>
+    
+{% endblock %}

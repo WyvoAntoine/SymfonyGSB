@@ -8,16 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
  * Etat
  *
  * @ORM\Table(name="etat")
- * @ORM\Entity(repositoryClass="App\Repository\EtatRepository")
+ *  @ORM\Entity(repositoryClass="App\Repository\EtatRepository")
  */
 class Etat
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="id", type="string", length=2, nullable=false, options={"fixed"=true})
+     * @ORM\Column(name="id", type="string", length=4, nullable=false, options={"fixed"=true})
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
@@ -32,11 +32,6 @@ class Etat
     {
         return $this->id;
     }
-    
-    public function setId($id): ?string
-    {
-        $this->id = $id;
-    }
 
     public function getLibelle(): ?string
     {
@@ -46,6 +41,13 @@ class Etat
     public function setLibelle(?string $libelle): self
     {
         $this->libelle = $libelle;
+
+        return $this;
+    }
+    
+    public function setId(?string $id): self
+    {
+        $this->id = $id;
 
         return $this;
     }

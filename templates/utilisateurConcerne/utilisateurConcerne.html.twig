@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="pc">
+        {% if laliste is empty %}
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <center><h1 class="title text-light" style="font-size:50px; border">Aucune utilisateur concerné par les fiche frais</h1></center>
+        {% else %}
+    <br/><br/><br/><br/><br/>
+    <center><h1 class="title text-light" style="font-size:50px; border"><b>Liste des utilisateurs concernés par les fiche frais<br/></b></h1></center>
+    <br/><br/><br/>
+    <div class="p-5 border" style="background-color:#374e6e ">
+    <table class="table" style="color:white;">
+  <thead style="color:white;">
+    <tr>
+      <th scope="col">ID Fiche Frais</th>
+      <th scope="col">Nom Utilisateur Secondaire</th>
+      <th scope="col">Prénom Utilisateur Secondaire</th>
+      <th scope="col">Niveau Utilisateur Secondaire</th>
+      
+
+    </tr>
+  </thead>
+  <tbody>
+      {% for unUser in laliste %}
+    <tr> 
+      <td>{{ unUser.id }}</td>
+      <td>{{ unUser.nom }}</td>
+      <td>{{ unUser.prenom }}</td>
+      <td>{{ unUser.niveau }}</td>
+
+    </tr>
+     {% endfor %}:
+     {% endif %}
+  </tbody>
+    
+{% endblock %}{# empty Twig template #}

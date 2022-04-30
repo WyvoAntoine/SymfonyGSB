@@ -16,7 +16,7 @@
                             {% for unDomaine in listeDomaines %}
                                 <p class="text-light" style="font-size:30px"> 
                                     <u>Domaine :</u> {{ unDomaine.nomDomaine }}, <br>
-                                    <u>Catégorie(s) :</u>                                    
+                                    <u>Catégorie(s) : </u> {{ nbCategories |length }}                         
                                     <br> <br> <br>
                                 </p>
                             {% endfor %}                         

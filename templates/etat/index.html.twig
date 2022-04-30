@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des états{% endblock %}
+
+{% block body %}
+    <div class="pc">
+        {% if etats is empty %}
+         <center><h1 class="title text-light" style="font-size:50px; border">Aucun État</h1></center>
+        {% else %}
+        <br/><br/><br/>
+        <center><h1 class="title text-light" style="font-size:50px; border">Liste des états</h1></center>
+        <br/>
+        <div class="p-5 border" style="background-color:#374e6e ">
+        <table class="table" style="color:white;">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etat in etats %}
+            <tr>
+                <td>{{ etat.id }}</td>
+                <td>{{ etat.libelle }}</td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:white; margin-left:-100px; text-decoration: none;" href="{{ path('etat_show', {'id': etat.id}) }}">Détails  |  </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                    <a style="color:white; margin-left:-100px; text-decoration: none;" href="{{ path('etat_edit', {'id': etat.id}) }}">Modifier</a> 
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('etat_new') }}">Nouveau +</a>
+        </div>
+    </div>
+    
+{% endblock %}

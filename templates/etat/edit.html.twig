@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification de l'état{% endblock %}
+
+{% block body %}
+    <center><h1 class="title text-light" style="font-size:50px; border">Modification de l'état</h1></center>
+
+    {{ include('etat/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('etat_index') }}">back to list</a>
+
+    {{ include('etat/_delete_form.html.twig') }}
+{% endblock %}

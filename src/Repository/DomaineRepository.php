@@ -51,10 +51,10 @@ class DomaineRepository extends ServiceEntityRepository
     public function lesCategories()
     {
         $em = $this->getEntityManager();
-        $query = $em->createQuery(" SELECT COUNT(g) FROM App\Entity\Categorie c "
-                . "INNER JOIN App\Entity\Domaine D "
-                . "WITH D.id=c.idDomaine");
-        $nbUtilisateurs = $query->getSingleScalarResult();
-        return $nbUtilisateurs;
+        $query = $em->createQuery(" SELECT COUNT(C) FROM App\Entity\Domaine D "
+                . "INNER JOIN App\Entity\Categorie C "
+                . "WITH C.id=D.id");
+        $nbCategories = $query->getResult();
+        return $nbCategories;
     }
 }

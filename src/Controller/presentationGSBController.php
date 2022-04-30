@@ -85,11 +85,11 @@ class presentationGSBController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(\App\Entity\Utilisateur::class);
         $lesUtilisateurs = $repo->findAll();
-        $nbUtilisateurs = $repo->nbUtilisateurs();
+        $nbUser=$repo->nbUtili();
         return $this->render('lesUtilisateurs/lesUtilisateurs.html.twig',
                 [
                     'listeUtilisateurs' => $lesUtilisateurs,
-                    'nbUtilisateurs' => $nbUtilisateurs
+                    'nbUtilisateurs' => $nbUser
                     ]
                 ); 
     } 
@@ -98,15 +98,32 @@ class presentationGSBController extends AbstractController
     /**
      * @Route("/sfGSB/LesUtilisateursByVille/ville/{ville}", name="lesUtilisateursByVille")
      */
-    public function lesUtilisateursByVille($ville = null) : Response
+    /**public function lesUtilisateursByVille($ville = null) : Response
     {
         $repo = $this->getDoctrine()->getRepository(\App\Entity\Utilisateur::class);
-        $lesUtilisateursByVille = $repo->findByville($ville);
+        $lesUtilisateursByVille = $repo->findByVille($ville);
         return $this->render('lesUtilisateurs/lesUtilisateursByVille.html.twig',
                 [
                     'listeUtilisateursByVille' => $lesUtilisateursByVille,
                     ]
                 ); 
+    }
+     */
+    
+    /**
+     * @Route("/sfGSB/LesUtilisateursByVille/ville/", name="lesUtilisateursByVille")
+     */
+    public function lesUtilisateursByVille(): Response
+    {
+        $repo = $this->getDoctrine()->getRepository(\App\Entity\Utilisateur::class);
+        $ville="test";
+        $lesUtilisateursByVille = $repo->findByVille($ville);
+        return $this->render('lesUtilisateurs/lesUtilisateursByVille.html.twig',
+                [
+                    'listeUtilisateursByVille'=>$lesUtilisateursByVille
+                ]
+            
+        );
     }
     
     /**
@@ -158,10 +175,50 @@ class presentationGSBController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(\App\Entity\Domaine::class);       
         $lesDomaines = $repo->findAll();  
+        $lesCategories = $repo->lesCategories();
         return $this->render('lesDomaines/lesDomaines.html.twig',
                 [
-                    'listeDomaines' => $lesDomaines
+                    'listeDomaines' => $lesDomaines,
+                    'nbCategories' => $lesCategories
                     ]
                 );         
+    }
+    
+    /**
+     * @Route("/sfGSB/utilisateurConcerne", name="utilisateurConcerne")
+     */
+    public function utilisateurConcerne(): Response
+    {
+        $repo = $this->getDoctrine()->getRepository(\App\Entity\UtilisateurSecondaire::class);
+        $laliste = $repo->findAll();
+        return $this->render('utilisateurConcerne/utilisateurConcerne.html.twig',
+                [
+                    'laliste'=>$laliste
+                ]
+            
+        );
+    }
+    
+    /**
+     * @Route("/etat", name="etat", methods={"GET","POST"})
+     */
+    public function etat(Request $request): Response
+    {
+        $etat = new Etat();
+        $form = $this->createForm(EtatType::class, $etat);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($etat);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('etat_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('etat/etat.html.twig', [
+            'etat' => $etat,
+            'form' => $form,
+        ]);
     }
 }

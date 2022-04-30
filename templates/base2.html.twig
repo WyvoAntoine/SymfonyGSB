@@ -56,6 +56,7 @@
                                     <a class="dropdown-item" href="{{ path('lesUtilisateursByFrais')}}">Utilisateurs ayant des frais</a>
                                     <a class="dropdown-item" href="{{ path('lesUtilisateursBySansFrais')}}">Utilisateurs sans frais</a>
                                     <a class="dropdown-item" href="{{ path('lesUtilisateursByNbFiches')}}">Nombre de fiches / Utilisateurs</a>
+                                    <a class="dropdown-item menudel" href="{{ path('utilisateurConcerne') }}">Utilisateur Concernés</a>
                                 </div>
                             </div>
                             <div class="btn-group" style="background-color: black; border-color: black;">
@@ -64,6 +65,15 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ path('lesDomaines')}}">Liste domaines</a>
+                                </div>
+                            </div>
+                            <div class="btn-group" style="background-color: black; border-color: black;">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="background-color: black; border-color: black; color: #0d6efd;">
+                                    Etat
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ path('etat_index')}}">Liste des états</a>
+                                    <a class="dropdown-item" href="{{ path('etat_new')}}">Créer un état</a>
                                 </div>
                             </div>
                         </div>                        
